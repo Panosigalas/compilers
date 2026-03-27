@@ -29,3 +29,13 @@ STRINGS / FACTORS
   StringTail -> Char StringTail | ε
   CHar -> a...z | A...Z
   
+  Τελικά η γρμματική μας θα είναι:
+  Expr -> Term ExprTail
+  ExprTail-> / Expr | ε (ε το κενό συνεπώς δεν υπαρχει συνέχεια)
+  Term -> Factor TermTail
+  TermTail-> ** Factor TermTail | ε
+  Factor -> (expr) | String 
+  String-> Char StringTail 
+  StringTail -> Char StringTail | ε
+  Char -> a....z | A... Z
+  

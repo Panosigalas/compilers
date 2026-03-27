@@ -49,4 +49,13 @@ STRINGS / FACTORS
   FIRST(Term)= {(,char} (επειδή ξεκινάει με factor, θα παίρνει το First του Factor)
   First(ExprTail)= {/, ε}
   First(Expr)= {(, char)} (επειδή ξεκιναει με Term θα πάιρνει το First του Term)
-  
+
+  FOLLOW : 
+  FOLLOW(Expr) = {$, ) ) (Περιέχει το $ γιατί είναι το αρχικό σύμβολο. Περιέχει το ) επειδή έχουμετ   τον κανόνα $Factor \rightarrow ( Expr )$).
+  FOLLOW(ExprTail)= { $, ) } (Εμφανίζεται στο τέλος του κανόνα Expr-> Term \ ExprTail και             παίρνει οτι έχει το FOLLOW του Expr).
+  FOLLOW(Term)=  { /, $ , ) } (Ακολουθείται από το ExprTail. Άρα παίρνει το FIRST του ExprTail        χωρίς το ε, δηλαδή το /, και το FOLLOW του Expr).
+  FOLLOW(TermTail) = { /, $ , ) } (Εμφανίζεται στο τέλος του κανόνα Term -> Factor TermTail άρα       παίρνει το FOLLOW του Term).
+  FOLLOW(Factor)= { **, /, $ ) } (Ακολουθείται από το TermTail. Παίρνει το FIRST του TermTail χωρίς   το ε, δηλαδή το ** και το FOLLOW του Term).
+  FOLLLOW(String) = { **, /, $ ) } (Είναι στο τέλος του Factor -> String επομενως παίρνει το FOLLOW   του Factor).
+  FOLLOW(StringTail) = { **, /, $ ) } (Είναι στο τέλος του String->  Char StringStringTail συνεπώς    παίρνει το follow του string
+  FOLLOW(Char)={ char,**, /, $ ) } Ακολουθείται από το StringTail. Παίρνει το FIRST του StringTail    χωρις το κενο ε. Δηλαδή το char και to follow του StringTail

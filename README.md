@@ -38,4 +38,15 @@ STRINGS / FACTORS
   String-> Char StringTail 
   StringTail -> Char StringTail | ε
   Char -> a....z | A... Z
+
+  Χρησιμοπούμε την παραπανω γραμματική για να κάνουμε τα σύνολα first και follow 
+  FIRST:
+  FIRST(Char) = {char}
+  FIRST(StringTaiil)= {Char | ε} (παραγει char ή το κενό ε)
+  FIRST(String)= {Char} (Το string ξεκινάει υποχρεωτικά με char)
+  FIRST(Factor) = {(,char} (ξεκινάει με παρένθεση ή String)
+  FIrST(TermTail)= {**, ε}
+  FIRST(Term)= {(,char} (επειδή ξεκινάει με factor, θα παίρνει το First του Factor)
+  First(ExprTail)= {/, ε}
+  First(Expr)= {(, char)} (επειδή ξεκιναει με Term θα πάιρνει το First του Term)
   

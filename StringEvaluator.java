@@ -58,4 +58,15 @@ public class StringEvaluator {
     }
     return res;
   }
+  
+  // implementation for operator /
+  public String parseExp() throws Exception {
+    String left = parseTerm();
+    if (lookahead == '/') {
+      match('/');
+      String right = parseExp();
+      return left.endsWith(right) ? left.substring(0, left.length() - right.length()) : left;
+    }
+    return left;
+  }
 }

@@ -21,7 +21,19 @@ public class StringEvaluator {
     if (lookahead == expected) {
       consume();
     } else {
-      throw new Exception("Parse Error");
+      throw new Exception("parse error");
     }
+  }
+  
+  // read str : they can be letters a to z or A to Z
+  public String parseStr() throws Exception {
+    StringBuilder sb = new StringBuilder();
+    if (!Character.isLetter(lookahead)) throw new Exception("parse error");
+      // if it is a letter a-z or A-Z then continue...
+      while (Character.isLetter(lookahead)) {
+        sb.append((char) lookahead);
+        consume();
+      }
+    return sb.toString();
   }
 }

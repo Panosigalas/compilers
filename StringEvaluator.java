@@ -69,4 +69,22 @@ public class StringEvaluator {
     }
     return left;
   }
+  
+  // function for single execution
+  public void solve() {
+    try {
+      consume(); // start reading
+      String result = parseExp();
+      if (lookahead == -1 || lookahead == '\n' || lookahead == '\r') {
+        System.out.println(result);
+      } else {
+        throw new Exception();
+      }
+    } catch (Exception e) { System.err.println("parse error"); }
+  }
+
+  // MAIN
+  public static void main(String[] args) {
+        new StringEvaluator(System.in).solve();
+    }
 }

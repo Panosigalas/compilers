@@ -36,4 +36,15 @@ public class StringEvaluator {
       }
     return sb.toString();
   }
+
+  // implementation for operator **
+  public String parseFactor() throws Exception {
+    if (lookahead == '(') {
+      match('(');
+      String res = parseExp();
+      match(')');
+      return res;
+    }
+      return parseStr();
+  }
 }

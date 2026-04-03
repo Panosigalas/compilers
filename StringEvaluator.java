@@ -37,7 +37,7 @@ public class StringEvaluator {
     return sb.toString();
   }
 
-  // implementation for operator **
+  // work with parenthesis - high priority
   public String parseFactor() throws Exception {
     if (lookahead == '(') {
       match('(');
@@ -46,5 +46,16 @@ public class StringEvaluator {
       return res;
     }
       return parseStr();
+  }
+
+  // implementation for operator ** 
+  public String parseTerm() throws Exception {
+    String res = parseFactor();
+    while (lookahead == '*') {
+      match('*'); match('*');
+      String right = parseFactor();
+      res = res + right + right;
+    }
+    return res;
   }
 }

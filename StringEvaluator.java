@@ -1,3 +1,7 @@
 public class StringEvaluator {
-  // code
+  private int lookahead;
+  private InputStream input;
+  public StringEvaluator(InputStream input) {
+      this.input = input;
+  }
 }
